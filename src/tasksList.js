@@ -40,7 +40,28 @@ class TaskList {
     this.taskListArray = this.taskListArray.filter((e) => !e.completed);
     this.#reorderIndexes();
     this.saveDataToStorage();
-    console.table(this.taskListArray);
+  }
+
+  getDescription(index) {
+    return this.taskListArray[index - 1].description;
+  }
+
+  getStatus(index) {
+    return this.taskListArray[index - 1].completed;
+  }
+
+  swapPositions(lID, rID) {
+    let indexA = 0;
+    let indexB = 0;
+    for (let i = 0; i < this.taskListArray.length; i += 1) {
+      if (this.taskListArray[i].index === Number(lID)) indexA = i;
+      if (this.taskListArray[i].index === Number(rID)) indexB = i;
+    }
+    const tempo = this.taskListArray[indexA];
+    this.taskListArray[indexA] = this.taskListArray[indexB];
+    this.taskListArray[indexB] = tempo;
+    this.#reorderIndexes();
+    this.saveDataToStorage();
   }
 
   #reorderIndexes() {

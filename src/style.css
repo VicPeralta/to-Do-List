@@ -76,11 +76,14 @@ footer {
   background-color: #f1efef;
 }
 
+.row-task.over {
+  border: 3px dotted blue;
+}
+
 .clear-completed {
   text-align: center;
   color: darkgray;
   padding: 20px;
-  text-align: center;
   font-size: 1.5rem;
   margin: 0 auto;
   display: block;
@@ -91,4 +94,3 @@ footer {
   text-decoration: underline;
   color: black;
 }
-
