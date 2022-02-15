@@ -53,6 +53,10 @@ body {
   flex: 2;
 }
 
+.row-task button {
+  cursor: move;
+}
+
 .task-description {
   border: none;
   border-width: 0;
