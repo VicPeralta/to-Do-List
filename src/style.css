@@ -76,7 +76,19 @@ footer {
   background-color: #f1efef;
 }
 
-footer h2 {
+.clear-completed {
   text-align: center;
   color: darkgray;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
 }
+
+.clear-completed:hover {
+  text-decoration: underline;
+  color: black;
+}
+

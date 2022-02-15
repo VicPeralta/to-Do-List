@@ -64,6 +64,10 @@ class App {
         e.target.focus();
       }
     });
+    document.querySelector('.clear-completed').addEventListener('click',() => {
+      this.taskList.clearAllCompleted();
+      this.displayTaskCards();
+    });
   }
 }
 
