@@ -3,7 +3,7 @@ import './style.css';
 const tasksList = [
   { index: 0, completed: false, description: 'do laundry 0' },
   { index: 1, completed: false, description: 'do laundry 1' },
-  { index: 2, completed: false, description: 'do laundry 2' },
+  { index: 2, completed: true, description: 'do laundry 2' },
   { index: 3, completed: false, description: 'do laundry 3' },
   { index: 4, completed: false, description: 'do laundry 4' },
 ];
@@ -13,7 +13,7 @@ function createTaskCards() {
   const taskTemplate = document.getElementById('task-template');
   tasksList.forEach((task) => {
     const taskCard = taskTemplate.content.cloneNode(true).children[0];
-    taskCard.querySelector('.check').setAttribute('checked', task.completed);
+    taskCard.querySelector('.check').checked = task.completed ? 'checked' : '';
     taskCard.querySelector('.task-description').value = task.description;
     taskCard.querySelector('.row-task button').setAttribute('data_id', task.index);
     taskContainer.appendChild(taskCard);
