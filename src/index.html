@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Template</title>
+  <title>ToDo List</title>
 </head>
+
 <body>
-  
+  <div class="main-container">
+    <div class="row row-header">
+      <p>Today's To Do</p>
+      <button type="button">&#x2672;</button>
+    </div>
+    <div class="row row-input">
+      <input type="text" placeholder="Add to your list...">
+      <button type="button">&#9166;</button>
+    </div>
+    <div class="task-container">
+      <template id="task-template">
+        <div class="row row-task">
+          <div class="task">
+            <input type="checkbox" class="check">
+            <input class="task-description" type="text" value="wash the dishes" enable="false">
+          </div>
+          <button data-id="">&#8942;</button>
+        </div>
+      </template>
+    </div>
+    <footer>
+      <h2>Clear all completed</h2>
+    </footer>
+  </div>
 </body>
+
 </html>
