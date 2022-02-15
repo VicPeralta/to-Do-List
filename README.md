@@ -14,6 +14,14 @@
 ## Live Demo
 [Live Demo](https://vicperalta.github.io/to-Do-List/)
 
+## Mobile
+<img src="./mobile.png" width="50%" height="auto"/>
+
+## Tablet
+<img src="./tablet.png" width="70%" height="auto"/>
+
+## Desktop
+<img src="./desktop.png" width="100%" height="auto"/>
 ## Getting Started
 
 To get a local copy follow these simple example steps.  
