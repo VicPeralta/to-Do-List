@@ -31,6 +31,12 @@ class TaskList {
     this.saveDataToStorage();
   }
 
+  updateTaskStatus(index, status) {
+    this.taskListArray[index - 1].completed = status;
+    console.table(this.taskListArray);
+    this.saveDataToStorage();
+  }
+
   #reorderIndexes() {
     let index = 1;
     this.taskListArray.forEach((e) => {
