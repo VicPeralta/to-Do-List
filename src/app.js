@@ -6,6 +6,7 @@ class App {
   }
 
   createTaskCards() {
+    this.taskList.saveDataToStorage();
     const taskContainer = document.querySelector('.task-container');
     const taskTemplate = document.getElementById('task-template');
     taskContainer.innerHTML = '';
@@ -29,6 +30,8 @@ class App {
       descriptionInput.addEventListener('blur', (e) => {
         const grandParent = e.target.parentNode.parentNode;
         grandParent.style.backgroundColor = 'inherit';
+        const index = e.target.parentNode.parentNode.querySelector('.delete-btn').dataset.id;
+        this.taskList.updateTaskDescription(index, e.target.value);
         setTimeout(() => {
           grandParent.querySelector('.delete-btn').style.display = 'none';
           grandParent.querySelector('.move-btn').style.display = 'block';

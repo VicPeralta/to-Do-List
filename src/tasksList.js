@@ -28,6 +28,7 @@ class TaskList {
 
   updateTaskDescription(index, description) {
     this.taskListArray[index - 1].description = description;
+    this.saveDataToStorage();
   }
 
   #reorderIndexes() {
