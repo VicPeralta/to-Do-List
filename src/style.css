@@ -53,8 +53,13 @@ body {
   flex: 2;
 }
 
-.row-task button {
+.move-btn {
   cursor: move;
+}
+
+.delete-btn {
+  display: none;
+  cursor: pointer;
 }
 
 .task-description {

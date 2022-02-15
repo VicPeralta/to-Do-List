@@ -15,7 +15,7 @@ class TaskList {
 
   addNewTask(description) {
     this.taskListArray.push({
-      index: this.taskListArray.lenght + 1,
+      index: this.taskListArray.length + 1,
       completed: false,
       description,
     });

@@ -14,23 +14,29 @@ class App {
       const checkBox = taskCard.querySelector('.check');
       const descriptionInput = taskCard.querySelector('.task-description');
       const taskButton = taskCard.querySelector('.row-task button');
+      const deleteButton = taskCard.querySelector('.delete-btn');
       checkBox.checked = task.completed ? 'checked' : '';
       descriptionInput.value = task.description;
+      taskButton.setAttribute('data-id', task.index);
+      deleteButton.setAttribute('data-id', task.index);
       descriptionInput.addEventListener('input', (e) => {
         const grandParent = e.target.parentNode.parentNode;
         grandParent.style.backgroundColor = 'lightgoldenrodyellow';
-        grandParent.querySelector('button').innerHTML = '&#128465;';
+        grandParent.querySelector('.delete-btn').style.display = 'block';
+        grandParent.querySelector('.move-btn').style.display = 'none';
       });
+
       descriptionInput.addEventListener('blur', (e) => {
         const grandParent = e.target.parentNode.parentNode;
         grandParent.style.backgroundColor = 'inherit';
-        grandParent.querySelector('button').innerHTML = '&#8942;';
+        setTimeout(() => {
+          grandParent.querySelector('.delete-btn').style.display = 'none';
+          grandParent.querySelector('.move-btn').style.display = 'block';
+        }, 200);
       });
-      taskButton.setAttribute('data_id', task.index);
-      taskButton.addEventListener('click', (e) => {
-        if (e.target.innerHTML === '&#128465;') {
-          console.log(`Deleting task: ${e.target.dataset.id}`);
-        }
+      deleteButton.addEventListener('click', (e) => {
+        this.taskList.deleteTask(e.target.dataset.id);
+        this.createTaskCards();
       });
       taskContainer.appendChild(taskCard);
     });
