@@ -8,19 +8,24 @@ const tasksList = [
   { index: 4, completed: false, description: 'Finish ToDo List' },
 ];
 
-function createTaskCards() {
+function createTaskCardsUsingTemplateString() {
   const taskContainer = document.querySelector('.task-container');
-  const taskTemplate = document.getElementById('task-template');
+  taskContainer.innerHTML = '';
   tasksList.forEach((task) => {
-    const taskCard = taskTemplate.content.cloneNode(true).children[0];
-    taskCard.querySelector('.check').checked = task.completed ? 'checked' : '';
-    taskCard.querySelector('.task-description').value = task.description;
-    taskCard.querySelector('.row-task button').setAttribute('data_id', task.index);
-    taskContainer.appendChild(taskCard);
+    const taskRow = document.createElement('div');
+    taskRow.classList.add('row', 'row-task');
+    taskRow.innerHTML = `
+      <div class="task">
+            <input type="checkbox" class="check" ${task.completed ? 'checked' : ''}>
+            <input class="task-description" type="text" value=' ${task.description}' >
+          </div>
+          <button data-id=${task.index}>&#8942;</button>
+    `;
+    taskContainer.appendChild(taskRow);
   });
 }
 
-createTaskCards();
+createTaskCardsUsingTemplateString();
 const tasks = document.querySelectorAll('.task-description');
 tasks.forEach((task) => {
   task.addEventListener('input', (e) => {
@@ -32,4 +37,22 @@ tasks.forEach((task) => {
     const grandParent = e.target.parentNode.parentNode;
     grandParent.style.backgroundColor = 'inherit';
   });
+});
+
+function getNewIndex() {
+  let max = 0;
+  tasksList.forEach((e) => {
+    if (e.index > max) max = e.index;
+  });
+  return max + 1;
+}
+
+document.querySelector('.row-input input').addEventListener('keypress', (e) => {
+  if (e.code === 'Enter') {
+    if (e.target.value === '') return;
+    tasksList.push({ index: getNewIndex(), completed: false, description: `${e.target.value}` });
+    createTaskCardsUsingTemplateString();
+    e.target.value = '';
+    e.target.focus();
+  }
 });

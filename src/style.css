@@ -43,6 +43,7 @@ body {
 .row-input input {
   font-family: inherit;
   background-color: inherit;
+  outline: none;
   width: 90%;
 }
 
