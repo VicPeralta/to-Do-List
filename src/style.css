@@ -53,6 +53,15 @@ body {
   flex: 2;
 }
 
+.move-btn {
+  cursor: move;
+}
+
+.delete-btn {
+  display: none;
+  cursor: pointer;
+}
+
 .task-description {
   border: none;
   border-width: 0;
