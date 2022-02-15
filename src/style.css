@@ -1,6 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
+
+* {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: bisque;
-  background-image: url('./assets/webpack.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  background-color: #e7e7e7;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  width: 50%;
+  background-color: white;
+}
+
+@media (max-width: 640px) {
+  .main-container {
+    width: 95%;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+}
+
+.row button {
+  background-color: transparent;
+  border: none;
+  font-size: larger;
+}
+
+.row-input input {
+  font-family: inherit;
+  background-color: inherit;
+  outline: none;
+  width: 90%;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  flex: 2;
+}
+
+.task-description {
+  border: none;
+  border-width: 0;
+  outline: none;
+  margin: 10px;
+  background-color: inherit;
+  width: 90%;
+  font-family: inherit;
+}
+
+footer {
+  background-color: #f1efef;
+}
+
+footer h2 {
+  text-align: center;
+  color: darkgray;
 }
