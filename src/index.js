@@ -1,11 +1,11 @@
 import './style.css';
 
 const tasksList = [
-  { index: 0, completed: false, description: 'do laundry 0' },
-  { index: 1, completed: false, description: 'do laundry 1' },
-  { index: 2, completed: true, description: 'do laundry 2' },
-  { index: 3, completed: false, description: 'do laundry 3' },
-  { index: 4, completed: false, description: 'do laundry 4' },
+  { index: 0, completed: false, description: 'Debug weather app code' },
+  { index: 1, completed: false, description: 'Prepare for StandUp meeting' },
+  { index: 2, completed: true, description: 'Study documentation about WebPack' },
+  { index: 3, completed: false, description: 'Organize folders' },
+  { index: 4, completed: false, description: 'Finish ToDo List' },
 ];
 
 function createTaskCards() {
