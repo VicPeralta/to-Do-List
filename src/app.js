@@ -17,6 +17,7 @@ class App {
       const taskButton = taskCard.querySelector('.row-task button');
       const deleteButton = taskCard.querySelector('.delete-btn');
       checkBox.checked = task.completed ? 'checked' : '';
+      if (task.completed) descriptionInput.style.color = 'lightgrey';
       checkBox.addEventListener('change', (e) => {
         const grandParent = e.target.parentNode.parentNode;
         if (e.target.checked) {
