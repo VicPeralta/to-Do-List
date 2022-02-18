@@ -11,6 +11,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   background-color: #e7e7e7;
+  font-size: 2rem;
 }
 
 .main-container {
@@ -21,10 +22,25 @@ body {
   background-color: white;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1120px) {
   .main-container {
     width: 95%;
   }
+}
+
+hr {
+  background-color: lightgray;
+  border: 1px lightgray solid;
+  width: 100%;
+}
+
+.row-header {
+  display: flex;
+  align-items: center;
+}
+
+.row-header p {
+  margin-bottom: 0;
 }
 
 .row {
@@ -42,15 +58,30 @@ body {
 
 .row-input input {
   font-family: inherit;
+  font-size: 1.4rem;
   background-color: inherit;
   outline: none;
   width: 90%;
+}
+
+.row-input button {
+  cursor: pointer;
+}
+
+.task-container {
+  padding-top: 20px;
+  box-shadow: 5px 10px 20px 0 lightgrey;
 }
 
 .task {
   display: flex;
   align-items: center;
   flex: 2;
+}
+
+.check {
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .move-btn {
@@ -70,6 +101,7 @@ body {
   background-color: inherit;
   width: 90%;
   font-family: inherit;
+  font-size: 1.3rem;
 }
 
 footer {
@@ -77,14 +109,14 @@ footer {
 }
 
 .row-task.over {
-  border: 3px dotted blue;
+  border: 3px solid blue;
 }
 
 .clear-completed {
   text-align: center;
   color: darkgray;
   padding: 20px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0 auto;
   display: block;
   cursor: pointer;

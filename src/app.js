@@ -21,8 +21,10 @@ class App {
         const grandParent = e.target.parentNode.parentNode;
         if (e.target.checked) {
           grandParent.querySelector('.task-description').style.textDecoration = 'line-through';
+          grandParent.querySelector('.task-description').style.color = 'lightgrey';
         } else {
           grandParent.querySelector('.task-description').style.textDecoration = 'none';
+          grandParent.querySelector('.task-description').style.color = 'inherit';
         }
         this.taskList.updateTaskStatus(grandParent.querySelector('.delete-btn').dataset.id, e.target.checked);
       });
@@ -59,15 +61,23 @@ class App {
     });
   }
 
+  addNewTask(e) {
+    if (e.value === '') return;
+    this.taskList.addNewTask(e.value);
+    this.displayTaskCards();
+    e.value = '';
+    e.focus();
+  }
+
   AddListeners() {
     document.querySelector('.row-input input').addEventListener('keypress', (e) => {
       if (e.code === 'Enter') {
-        if (e.target.value === '') return;
-        this.taskList.addNewTask(e.target.value);
-        this.displayTaskCards();
-        e.target.value = '';
-        e.target.focus();
+        this.addNewTask(e.target);
       }
+    });
+    document.querySelector('.row-input button').addEventListener('click', () => {
+      const e = document.querySelector('.row-input input');
+      this.addNewTask(e);
     });
     document.querySelector('.clear-completed').addEventListener('click', () => {
       this.taskList.clearAllCompleted();
@@ -87,13 +97,11 @@ class App {
         e.target.classList.remove('over');
       }
     });
-
     document.addEventListener('dragenter', (e) => {
       if (e.target.matches('.row-task')) {
         e.target.classList.add('over');
       }
     });
-
     document.addEventListener('dragleave', (e) => {
       if (e.target.matches('.row-task')) {
         e.target.classList.remove('over');
@@ -102,7 +110,6 @@ class App {
     document.addEventListener('dragover', (e) => {
       e.preventDefault();
     });
-
     document.addEventListener('drop', (e) => {
       e.preventDefault();
       if (e.target.matches('.row-task')) {
