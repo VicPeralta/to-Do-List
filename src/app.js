@@ -71,8 +71,8 @@ class App {
   }
 
   AddListeners() {
-    document.querySelector('.row-input input').addEventListener('keypress', (e) => {
-      if (e.code === 'Enter') {
+    document.querySelector('.row-input input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
         this.addNewTask(e.target);
       }
     });
