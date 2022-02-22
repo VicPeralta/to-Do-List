@@ -22,7 +22,7 @@ class TaskList {
   }
 
   deleteTask(index) {
-    this.taskListArray = this.taskListArray.filter((e) => e.index !== Number(index));
+    this.taskListArray = this.taskListArray.filter((task) => task.index !== Number(index));
     this.#reorderIndexes();
   }
 
@@ -37,7 +37,7 @@ class TaskList {
   }
 
   clearAllCompleted() {
-    this.taskListArray = this.taskListArray.filter((e) => !e.completed);
+    this.taskListArray = this.taskListArray.filter((task) => !task.completed);
     this.#reorderIndexes();
     this.saveDataToStorage();
   }
@@ -51,12 +51,8 @@ class TaskList {
   }
 
   swapPositions(lID, rID) {
-    let indexA = 0;
-    let indexB = 0;
-    for (let i = 0; i < this.taskListArray.length; i += 1) {
-      if (this.taskListArray[i].index === Number(lID)) indexA = i;
-      if (this.taskListArray[i].index === Number(rID)) indexB = i;
-    }
+    const indexA = this.taskListArray.findIndex((task) => task.index === Number(lID));
+    const indexB = this.taskListArray.findIndex((task) => task.index === Number(rID));
     const tempo = this.taskListArray[indexA];
     this.taskListArray[indexA] = this.taskListArray[indexB];
     this.taskListArray[indexB] = tempo;
@@ -66,8 +62,8 @@ class TaskList {
 
   #reorderIndexes() {
     let index = 1;
-    this.taskListArray.forEach((e) => {
-      e.index = index;
+    this.taskListArray.forEach((task) => {
+      task.index = index;
       index += 1;
     });
   }
