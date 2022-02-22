@@ -22,7 +22,7 @@ class TaskList {
   }
 
   deleteTask(index) {
-    this.taskListArray = this.taskListArray.filter((e) => e.index !== Number(index));
+    this.taskListArray = this.taskListArray.filter((task) => task.index !== Number(index));
     this.#reorderIndexes();
   }
 
@@ -37,7 +37,7 @@ class TaskList {
   }
 
   clearAllCompleted() {
-    this.taskListArray = this.taskListArray.filter((e) => !e.completed);
+    this.taskListArray = this.taskListArray.filter((task) => !task.completed);
     this.#reorderIndexes();
     this.saveDataToStorage();
   }
@@ -66,8 +66,8 @@ class TaskList {
 
   #reorderIndexes() {
     let index = 1;
-    this.taskListArray.forEach((e) => {
-      e.index = index;
+    this.taskListArray.forEach((task) => {
+      task.index = index;
       index += 1;
     });
   }
