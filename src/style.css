@@ -89,7 +89,6 @@ hr {
 }
 
 .delete-btn {
-  display: none;
   cursor: pointer;
 }
 
@@ -112,6 +111,11 @@ footer {
   border: 3px solid blue;
 }
 
+.completed-task {
+  text-decoration: line-through;
+  color: lightgrey;
+}
+
 .clear-completed {
   text-align: center;
   color: darkgray;
@@ -120,6 +124,18 @@ footer {
   margin: 0 auto;
   display: block;
   cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.drag-start {
+  opacity: 0.4;
+}
+
+.selected-row {
+  background-color: lightgoldenrodyellow;
 }
 
 .clear-completed:hover {

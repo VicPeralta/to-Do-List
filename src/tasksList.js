@@ -51,12 +51,8 @@ class TaskList {
   }
 
   swapPositions(lID, rID) {
-    let indexA = 0;
-    let indexB = 0;
-    for (let i = 0; i < this.taskListArray.length; i += 1) {
-      if (this.taskListArray[i].index === Number(lID)) indexA = i;
-      if (this.taskListArray[i].index === Number(rID)) indexB = i;
-    }
+    const indexA = this.taskListArray.findIndex((task) => task.index === Number(lID));
+    const indexB = this.taskListArray.findIndex((task) => task.index === Number(rID));
     const tempo = this.taskListArray[indexA];
     this.taskListArray[indexA] = this.taskListArray[indexB];
     this.taskListArray[indexB] = tempo;
