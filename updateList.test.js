@@ -18,4 +18,54 @@ describe('update descriptions and statuses in the local storage', () => {
     taskList.updateTaskStatus(1, true);
     expect(taskList.getStatus(1)).toBeTruthy();
   });
+
+  test('Clear all completed from Local Storage', () => {
+    window.localStorage.clear();
+    const taskList = new TaskList();
+    taskList.addNewTask('New Task1');
+    taskList.addNewTask('New Task2');
+    taskList.updateTaskStatus(1, true);
+    taskList.clearAllCompleted();
+    const size = taskList.taskListArray.length;
+    expect(size).toBe(1);
+  });
+});
+
+describe('update descriptions and statuses in the DOM', () => {
+  test('updates task description in the DOM', () => {
+    window.localStorage.clear();
+    document.body.innerHTML = `
+       <template id="task-template" >
+      <div class="row row-task" draggable="true">
+        <div class="task">
+          <input type="checkbox" class="check">
+          <input class="task-description" type="text">
+        </div>
+        <button class='move-btn' type="button">&#8942;</button>
+        <button class='delete-btn hide' type="button">&#128465;</button>
+      </div>
+    </template>
+    <div class="task-container">
+    </div>
+    `;
+    const app = new App();
+    app.taskList.addNewTask('Task 1');
+    app.taskList.addNewTask('Task 2');
+    app.taskList.addNewTask('Task 3');
+    app.taskList.addNewTask('Task 4');
+    app.displayTaskCards();
+    app.taskList.updateTaskDescription(1, 'edited task 1');
+    app.displayTaskCards();
+    const tasks = document.body.querySelectorAll('.row-task');
+    const description = tasks[0].querySelector('.task-description').value;
+    expect(description).toBe('edited task 1');
+  });
+/* 
+  test('updates task completed status (Checkbox is checked)', () => {
+
+  });
+
+  test('Clear all completed from the DOM', () => {
+   
+  }); */
 });
