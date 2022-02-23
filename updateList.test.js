@@ -60,12 +60,65 @@ describe('update descriptions and statuses in the DOM', () => {
     const description = tasks[0].querySelector('.task-description').value;
     expect(description).toBe('edited task 1');
   });
-/* 
-  test('updates task completed status (Checkbox is checked)', () => {
 
+  test('updates task completed status (Checkbox is checked)', () => {
+    document.body.innerHTML = `
+       <template id="task-template" >
+      <div class="row row-task" draggable="true">
+        <div class="task">
+          <input type="checkbox" class="check">
+          <input class="task-description" type="text">
+        </div>
+        <button class='move-btn' type="button">&#8942;</button>
+        <button class='delete-btn hide' type="button">&#128465;</button>
+      </div>
+    </template>
+    <div class="task-container">
+    </div>
+    `;
+    window.localStorage.clear();
+    const app = new App();
+    app.taskList.addNewTask('Task 1');
+    app.taskList.addNewTask('Task 2');
+    app.taskList.addNewTask('Task 3');
+    app.taskList.addNewTask('Task 4');
+    app.displayTaskCards();
+    app.taskList.updateTaskStatus(1, true);
+    app.displayTaskCards();
+    const tasks = document.body.querySelectorAll('.row-task');
+    const status = tasks[0].querySelector('.check').checked;
+    expect(status).toBeTruthy();
   });
 
   test('Clear all completed from the DOM', () => {
-   
-  }); */
+    document.body.innerHTML = `
+       <template id="task-template" >
+      <div class="row row-task" draggable="true">
+        <div class="task">
+          <input type="checkbox" class="check">
+          <input class="task-description" type="text">
+        </div>
+        <button class='move-btn' type="button">&#8942;</button>
+        <button class='delete-btn hide' type="button">&#128465;</button>
+      </div>
+    </template>
+    <div class="task-container">
+    </div>
+    `;
+    window.localStorage.clear();
+    const app = new App();
+    app.taskList.addNewTask('Task 1');
+    app.taskList.addNewTask('Task 2');
+    app.taskList.addNewTask('Task 3');
+    app.taskList.addNewTask('Task 4');
+    app.displayTaskCards();
+    app.taskList.updateTaskStatus(1, true);
+    app.taskList.updateTaskStatus(2, true);
+    app.taskList.updateTaskStatus(3, true);
+    app.displayTaskCards();
+    app.taskList.clearAllCompleted();
+    app.displayTaskCards();
+    const tasksCardCount = document.body.querySelectorAll('.row-task').length;
+    expect(tasksCardCount).toBe(1);
+  });
 });
