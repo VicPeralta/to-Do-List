@@ -109,9 +109,6 @@ describe('App testing', () => {
     description.dispatchEvent(event);
     const blur = new Event('blur');
     description.dispatchEvent(blur);
-    setTimeout(() => {
-      const i = 0;
-    }, 500);
   });
   test('Clear all button', () => {
     document.body.innerHTML = `
