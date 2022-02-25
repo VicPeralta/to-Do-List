@@ -18,6 +18,13 @@ describe('Tasklist localstorage', () => {
     taskList.deleteTask(1);
     expect(taskList.taskListArray.length).toBe(1);
   });
+  test('Swap positions', () => {
+    const taskList = new TaskList();
+    taskList.addNewTask('New Task1');
+    taskList.addNewTask('New Task2');
+    taskList.swapPositions(1, 2);
+    expect(taskList.getDescription(1)).toBe('New Task2');
+  });
 });
 
 describe('DOM manipulation', () => {
@@ -36,6 +43,7 @@ describe('DOM manipulation', () => {
     <div class="task-container">
     </div>
     `;
+    window.localStorage.clear();
     const app = new App();
     app.taskList.addNewTask('Task 1');
     app.taskList.addNewTask('Task 2');
