@@ -113,6 +113,7 @@ class App {
       if (e.target.matches('.row-task')) {
         e.stopPropagation();
         if (this.dragSourceElement !== e.target) {
+          if (this.taskList.taskListArray.length < 2) return;
           this.dragTargetID = e.target.querySelector('.move-btn').dataset.id;
           this.taskList.swapPositions(this.dragTargetID, this.dragSourceID);
           e.target.classList.remove('over');
