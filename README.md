@@ -15,7 +15,7 @@
 [Live Demo](https://vicperalta.github.io/to-Do-List/)
 
 ## Mobile
-<img src="./mobile.png" width="50%" height="auto"/>
+<img src="./todolist.gif" width="50%" height="auto"/>
 
 ## Tablet
 <img src="./tablet.png" width="70%" height="auto"/>
